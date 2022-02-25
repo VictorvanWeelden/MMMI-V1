@@ -5,7 +5,7 @@ public abstract class MazeAlgorithm
 {
     protected MazeCell[,] mazeCells;
     protected int mazeRows, mazeColumns;
-    protected MazeAlgorithm(MAzeCell[,] mazeCells) : base()
+    protected MazeAlgorithm(MazeCell[,] mazeCells) : base()
     {
         this.mazeCells = mazeCells;
         mazeRows = mazeCells.GetLength(0);
