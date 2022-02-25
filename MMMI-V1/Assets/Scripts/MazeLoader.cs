@@ -6,10 +6,9 @@ using UnityEngine;
 public class MazeLoader : MonoBehaviour
 {
 
-
     public int mazeRows, mazeColumns;
     public GameObject wall;
-    public float size = 2f;
+    public float size = 2f; 
 
     private MazeCell[,] mazeCells;
     // Start is called before the first frame update

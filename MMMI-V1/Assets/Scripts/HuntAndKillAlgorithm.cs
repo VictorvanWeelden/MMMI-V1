@@ -12,6 +12,11 @@ public class HuntAndKillAlgorithm : MazeAlgorithm
     private bool courseComplete = false;
     private bool wallDestroyed;
 
+    public int currentPos = 0;
+   // public const string key = "123424123342421432233144441212334432121223344";
+    public const string key = "123412341234123412341234123412341234123412341234";
+    public string currentNum;
+    
     public HuntAndKillAlgorithm(MazeCell[,] mazeCells) : base(mazeCells) { }
 
     public override void CreateMaze()
@@ -30,11 +35,18 @@ public class HuntAndKillAlgorithm : MazeAlgorithm
         }
     }
 
+    public int GetNextNumber()
+    {
+        currentNum = key.Substring(currentPos++ % key.Length, 1);
+        return int.Parse(currentNum);
+    }
+
     private void Kill()
     {
         while(RouteStillAvailable(currentRow, currentColumn))
         {
-            direction = Random.Range(1,5);
+            direction = GetNextNumber();
+//            direction = Random.Range(1,5);
             if(direction == 1 && CellIsAvailable(currentRow -1, currentColumn))
             { //North
                 DestroyWallIfItExists(mazeCells[currentRow, currentColumn].northWall);
@@ -163,8 +175,8 @@ public class HuntAndKillAlgorithm : MazeAlgorithm
         wallDestroyed = false;
         while(!wallDestroyed)
         {
-            direction = Random.Range(1,5);
-
+            //direction = Random.Range(1,5);
+            direction = GetNextNumber();
             if(direction == 1 && row > 0 && mazeCells[row -1, column].visited)
             {
                 DestroyWallIfItExists(mazeCells[row, column].northWall);
