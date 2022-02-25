@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-
     }
 
     public enum GameStates
