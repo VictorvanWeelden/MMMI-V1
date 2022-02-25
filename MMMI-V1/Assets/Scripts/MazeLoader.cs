@@ -8,6 +8,8 @@ public class MazeLoader : MonoBehaviour
 
     public int mazeRows, mazeColumns;
     public GameObject wall;
+    public GameObject startfloor;
+    public GameObject Finishfloor;
     public float size = 2f; 
 
     private MazeCell[,] mazeCells;
@@ -36,9 +38,24 @@ public class MazeLoader : MonoBehaviour
         {
                 mazeCells[r, c] = new MazeCell();
 
-                mazeCells[r, c].floor = Instantiate(wall, new Vector3((r * size), -(size / 2f), (c * size)), Quaternion.identity) as GameObject;
-                mazeCells[r, c].floor.name = "Floor" + r + "," + c;
-                mazeCells[r, c].floor.transform.Rotate(Vector3.right * 90f);
+                if (r == 0 && c == 0)
+                {
+                    mazeCells[r, c].floor = Instantiate(startfloor, new Vector3((r * size), -(size / 2f), (c * size)), Quaternion.identity) as GameObject;
+                    mazeCells[r, c].floor.name = "StartFloor" + r + "," + c;
+                    mazeCells[r, c].floor.transform.Rotate(Vector3.right * 90f);
+                }
+                else if(r == mazeRows -1 && c == mazeColumns -1)
+                {
+                    mazeCells[r, c].floor = Instantiate(Finishfloor, new Vector3((r * size), -(size / 2f), (c * size)), Quaternion.identity) as GameObject;
+                    mazeCells[r, c].floor.name = "FinishFloor" + r + "," + c;
+                    mazeCells[r, c].floor.transform.Rotate(Vector3.right * 90f);
+                }
+                else 
+                {
+                    mazeCells[r, c].floor = Instantiate(wall, new Vector3((r * size), -(size / 2f), (c * size)), Quaternion.identity) as GameObject;
+                    mazeCells[r, c].floor.name = "Floor" + r + "," + c;
+                    mazeCells[r, c].floor.transform.Rotate(Vector3.right * 90f);
+                }
 
                 if(c == 0)
                 {
