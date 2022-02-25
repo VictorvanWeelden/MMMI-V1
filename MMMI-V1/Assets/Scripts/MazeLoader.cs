@@ -1,21 +1,24 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MazeLoader : MonoBehaviour
 {
+
+
     public int mazeRows, mazeColumns;
     public GameObject wall;
     public float size = 2f;
 
     private MazeCell[,] mazeCells;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         InitializeMaze();
 
-        //MazeAlgorithm ma = new HuntAndKillAlg(mazeCells);
-        //ma.CreateMaze();
+        MazeAlgorithm ma = new HuntAndKillAlgorithm(mazeCells);
+        ma.CreateMaze();
     }
 
     // Update is called once per frame
