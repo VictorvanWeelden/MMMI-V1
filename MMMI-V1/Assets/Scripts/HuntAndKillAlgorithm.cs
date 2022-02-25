@@ -15,7 +15,8 @@ public class HuntAndKillAlgorithm : MazeAlgorithm
 
     public int currentPos = 0;
     public const string key = "123424123342421432233144441212334432121223344";
-   // public const string key = "123412341234123412341234123412341234123412341234";
+    // public const string key = "123412341234123412341234123412341234123412341234";
+    //public const string key = "123321";
     public string currentNum;
     
     public HuntAndKillAlgorithm(MazeCell[,] mazeCells) : base(mazeCells) { }
