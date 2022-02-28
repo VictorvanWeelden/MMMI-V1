@@ -15,13 +15,14 @@ public class Tracking : MonoBehaviour
     }
 
     void Update() {
-        completionTime += Time.deltaTime();
+        completionTime += Time.deltaTime;
     }
 
-    public String ReturnCompletionTime() {
-        int minutes = Mathf.FloorToInt(Timer / 60F);
-	    int seconds = Mathf.FloorToInt(Timer % 60F);
-	    int milliseconds = Mathf.FloorToInt((Timer * 100F) % 100F);
+    // Call this when the player has completed the level
+    public string ReturnCompletionTime() {
+        int minutes = Mathf.FloorToInt(completionTime / 60F);
+	    int seconds = Mathf.FloorToInt(completionTime % 60F);
+	    int milliseconds = Mathf.FloorToInt((completionTime * 100F) % 100F);
         return minutes + ":" + seconds + ":" + milliseconds;
     }
 }
