@@ -10,7 +10,7 @@ public class GetTrackerData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playTimeText.text = PlayerPrefs.GetString("playTime");
-        errorsText.text = PlayerPrefs.GetInt("noBumps").ToString();
+        playTimeText.text = "Time played: " + PlayerPrefs.GetString("playTime");
+        errorsText.text = "Wall bumps: " + PlayerPrefs.GetInt("noBumps").ToString();
     }
 }

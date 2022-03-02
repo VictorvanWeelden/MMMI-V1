@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 public class CollisionHandler : MonoBehaviour
 {
     public AudioSource audioSource;
+
+    void Start(){
+        PlayerPrefs.SetInt("noBumps", 0);
+    }
     
     void OnCollisionEnter(Collision col)
     {
@@ -14,7 +18,7 @@ public class CollisionHandler : MonoBehaviour
             Debug.Log("bump");
             var gamepad = Gamepad.current;
             StartCoroutine(Rumble());
-                     
+            GetSetErrors();    
         }
        
     }
@@ -27,5 +31,10 @@ public class CollisionHandler : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             gamepad.SetMotorSpeeds(0, 0);
         }
+    }
+
+    void GetSetErrors() {
+        int currErrs = PlayerPrefs.GetInt("noBumps");
+        PlayerPrefs.SetInt("noBumps", currErrs + 1);
     }
 }
