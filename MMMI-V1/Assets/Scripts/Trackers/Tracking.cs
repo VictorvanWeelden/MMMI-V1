@@ -32,6 +32,7 @@ public class Tracking : MonoBehaviour
             string completionTime = ReturnCompletionTime();
             Debug.Log(completionTime);
             PlayerPrefs.SetString("playTime", completionTime);
+            TakeScreenshot();
             SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
         }
     }
@@ -42,5 +43,11 @@ public class Tracking : MonoBehaviour
 	    int seconds = Mathf.FloorToInt(completionTime % 60F);
 	    int milliseconds = Mathf.FloorToInt((completionTime * 100F) % 100F);
         return minutes + ":" + seconds + ":" + milliseconds;
+    }
+
+    void TakeScreenshot() {
+        Camera.main.transform.rotation = Quaternion.Euler(90, 0, 0);
+        string fileName = @"Assets\Screenshots\ " + System.DateTime.Now.ToString("dd-MM-yyyy-HH_mm_ss");
+        ScreenCapture.CaptureScreenshot(fileName);
     }
 }
