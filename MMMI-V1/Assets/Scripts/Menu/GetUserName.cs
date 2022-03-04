@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class GetUserName : MonoBehaviour
 {
-    InputField input;
-
     public void GetInput() {
         InputField input = GameObject.Find("User ID").GetComponent<InputField>();
         PlayerPrefs.SetString("username", input.text);
