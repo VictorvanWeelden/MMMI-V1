@@ -47,7 +47,7 @@ public class Tracking : MonoBehaviour
 
     void TakeScreenshot() {
         Camera.main.transform.rotation = Quaternion.Euler(90, 0, 0);
-        string fileName = @"Assets\Screenshots\ " + System.DateTime.Now.ToString("dd-MM-yyyy-HH_mm_ss");
+        string fileName = @"Assets\Screenshots\" + PlayerPrefs.GetString("username") + "_MAZETYPE_Route_" + System.DateTime.Now.ToString("dd-MM-yyyy-HH_mm_ss");
         ScreenCapture.CaptureScreenshot(fileName);
     }
 }
