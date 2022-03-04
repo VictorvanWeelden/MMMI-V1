@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.37311915, g: 0.3807396, b: 0.35872662, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -166,11 +166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190f98e77819c6541b9f9ebf2c0091dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeRows: 10
-  mazeColumns: 12
+  mazeRows: 5
+  mazeColumns: 5
   wall: {fileID: 599007868549997508, guid: b66a25acf6218a14ba50dce7c7865bb8, type: 3}
   startfloor: {fileID: 1856154067120880052, guid: d986009f86e57bd4bb18ae552ba2196c, type: 3}
   Finishfloor: {fileID: 9006300012193615961, guid: 5221e19779b68ff46b2b2d75748b1742, type: 3}
+  selectmaze: 0
   size: 6
 --- !u!1 &705507993
 GameObject:

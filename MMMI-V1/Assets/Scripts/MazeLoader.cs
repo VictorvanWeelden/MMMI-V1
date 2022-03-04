@@ -10,6 +10,7 @@ public class MazeLoader : MonoBehaviour
     public GameObject wall;
     public GameObject startfloor;
     public GameObject Finishfloor;
+    public int selectmaze;
     public float size = 2f; 
 
     private MazeCell[,] mazeCells;
@@ -18,7 +19,7 @@ public class MazeLoader : MonoBehaviour
     {
         InitializeMaze();
 
-        MazeAlgorithm ma = new HuntAndKillAlgorithm(mazeCells);
+        MazeAlgorithm ma = new HuntAndKillAlgorithm(mazeCells, selectmaze);
         ma.CreateMaze();
     }
 

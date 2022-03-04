@@ -7,23 +7,41 @@ public class HuntAndKillAlgorithm : MazeAlgorithm
     private int currentRow = 0;
     private int currentColumn = 0;
     private int direction;
-    private int availableRoutes, visitedCells;
+    private int availableRoutes, visitedCells, selectmazex;
 
     private bool courseComplete = false;
     public bool autoGenerateMaze = false;
     private bool wallDestroyed;
 
     public int currentPos = 0;
-    public const string key = "123424123342421432233144441212334432121223344";
-    // public const string key = "123412341234123412341234123412341234123412341234";
-    //public const string key = "123321";
+    public const string key1 = "2324223132311413144";
+    public const string key2 = "32422231131132324242331";
+    public const string key3 = "32422231131132312424223333";
+    public string key;
     public string currentNum;
     
-    public HuntAndKillAlgorithm(MazeCell[,] mazeCells) : base(mazeCells) { }
+    public HuntAndKillAlgorithm(MazeCell[,] mazeCells, int selectmaze) : base(mazeCells, selectmaze) { selectmazex = selectmaze; }
 
     public override void CreateMaze()
     {
+        selectMaze();
         HuntAndKill();
+    }
+
+    public void selectMaze()
+    {
+        if (selectmazex == 1)
+        {
+            key = key1;
+        }
+        else if (selectmazex == 2)
+        {
+            key = key2;
+        }
+        else
+        {
+            key = key3;
+        }
     }
 
     private void HuntAndKill()

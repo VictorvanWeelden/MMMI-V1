@@ -8,6 +8,10 @@ public class RigidbodyMovement : MonoBehaviour
     Rigidbody rigidBod;
     public float movementSpeed = 10f;
     Vector3 walkingDirecion;
+    Vector2 moveKeyboard;
+    Vector2 moveController;
+    float w, a , s, d, output;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,15 +21,13 @@ public class RigidbodyMovement : MonoBehaviour
     void FixedUpdate() {
         // Vector3 movementInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         var gamepad = Gamepad.current;
-        Vector2 moveKeyboard;
-        Vector2 moveController;
-     
+
         var kb = Keyboard.current;
         // Read keyboard values 
-        float w = kb.wKey.ReadValue();
-        float a = kb.aKey.ReadValue();
-        float s = kb.sKey.ReadValue();
-        float d = kb.dKey.ReadValue();
+        w = kb.wKey.ReadValue();
+        a = kb.aKey.ReadValue();
+        s = kb.sKey.ReadValue();
+        d = kb.dKey.ReadValue();
         // Combine values
         moveKeyboard = new Vector2(1 * d + -1 * a, 1 * w + -1 * s);
 
@@ -56,7 +58,7 @@ public class RigidbodyMovement : MonoBehaviour
     }   
     // Rescales the distance from the player to the wall to fit the rumbling of the controller
     private float Rescale(float input, float startdistance) {
-        float output = 0;
+        output = 0;
         if (input >= startdistance) return output;
         output = (float)((input-startdistance) *-1/startdistance);
         return output;
