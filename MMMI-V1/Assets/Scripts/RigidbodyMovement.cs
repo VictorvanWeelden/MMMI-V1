@@ -53,7 +53,7 @@ public class RigidbodyMovement : MonoBehaviour
         RaycastHit hit;
         Ray directionRay = new Ray(rigidBod.position, walkingDirecion);
         if(Physics.Raycast(directionRay,out hit)) {
-            var motorspeed = Rescale(hit.distance,3);
+            var motorspeed = Rescale(hit.distance,10000);
             var gamepad = Gamepad.current;
             if (gamepad != null) {
                 gamepad.SetMotorSpeeds(motorspeed, motorspeed);
@@ -77,7 +77,7 @@ public class RigidbodyMovement : MonoBehaviour
 // Rescale for the audio frequency
     private float RescaleAudio(float distance, float startingPitch){
         
-        float audioFreq = startingPitch - 2*distance;
+        float audioFreq = startingPitch - distance; //we can put 2 * distance if you think the sound is appearing too soon, I was not sure what I like more
         return audioFreq;
         
     }
