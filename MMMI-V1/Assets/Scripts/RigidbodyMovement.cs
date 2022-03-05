@@ -11,6 +11,7 @@ public class RigidbodyMovement : MonoBehaviour
     Vector2 moveKeyboard;
     Vector2 moveController;
     float w, a , s, d, output;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +58,14 @@ public class RigidbodyMovement : MonoBehaviour
             if (gamepad != null) {
                 gamepad.SetMotorSpeeds(motorspeed, motorspeed);
             }
+
+            var audioFrequency = RescaleAudio(hit.distance, 6);
+            audioSource = GetComponent<AudioSource>();
+            audioSource.pitch = audioFrequency;
+            audioSource.Play();
         }
+        
+
     }   
     // Rescales the distance from the player to the wall to fit the rumbling of the controller
     private float Rescale(float input, float startdistance) {
@@ -65,6 +73,13 @@ public class RigidbodyMovement : MonoBehaviour
         if (input >= startdistance) return output;
         output = (float)((input-startdistance) *-1/startdistance);
         return output;
+    }
+// Rescale for the audio frequency
+    private float RescaleAudio(float distance, float startingPitch){
+        
+        float audioFreq = startingPitch - 2*distance;
+        return audioFreq;
+        
     }
 
 }

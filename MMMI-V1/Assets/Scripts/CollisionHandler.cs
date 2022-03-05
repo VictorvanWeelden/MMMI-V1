@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class CollisionHandler : MonoBehaviour
 {
-    public AudioSource audioSource;
+   // public AudioSource audioSource;
 
     void Start(){
         PlayerPrefs.SetInt("noBumps", 0);
@@ -14,7 +15,7 @@ public class CollisionHandler : MonoBehaviour
     {
        
         if (col.gameObject.tag == "Wall"){
-             audioSource.Play();
+           //  audioSource.Play();
             Debug.Log("bump");
             GetSetErrors();    
         }
