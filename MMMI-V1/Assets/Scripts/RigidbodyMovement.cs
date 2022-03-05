@@ -32,7 +32,10 @@ public class RigidbodyMovement : MonoBehaviour
         moveKeyboard = new Vector2(1 * d + -1 * a, 1 * w + -1 * s);
 
         // Read controller value
-        moveController = gamepad.dpad.ReadValue();
+        if (gamepad != null) {
+            moveController = gamepad.dpad.ReadValue();
+        }
+     
       
         //Apply the movement vector to the current position, which is
         //multiplied by deltaTime and speed for a smooth MovePosition
