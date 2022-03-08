@@ -17,6 +17,7 @@ public class MazeLoader : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        selectmaze = PlayerPrefs.GetInt("level");
         InitializeMaze();
 
         MazeAlgorithm ma = new HuntAndKillAlgorithm(mazeCells, selectmaze);

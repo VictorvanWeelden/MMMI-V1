@@ -7,6 +7,6 @@ public class LoadGame : MonoBehaviour
 {
     public void LoadMazes()
     {
-        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+       SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
 }

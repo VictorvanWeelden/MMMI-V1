@@ -55,14 +55,14 @@ public class RigidbodyMovement : MonoBehaviour
         if(Physics.Raycast(directionRay,out hit)) {
             var motorspeed = Rescale(hit.distance,3);
             var gamepad = Gamepad.current;
-            if (gamepad != null) {
+            if (gamepad != null && (PlayerPrefs.GetInt("haptic") == 1) ) {
                 gamepad.SetMotorSpeeds(motorspeed, motorspeed);
             }
 
             var audioFrequency = RescaleAudio(hit.distance, 8);
             audioSource = GetComponent<AudioSource>();
             audioSource.pitch = audioFrequency;
-            audioSource.Play();
+            if (PlayerPrefs.GetInt("audio") == 1) audioSource.Play();
         }
         
 
