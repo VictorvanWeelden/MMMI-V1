@@ -16,7 +16,7 @@ public class HuntAndKillAlgorithm : MazeAlgorithm
     public int currentPos = 0;
     public const string key1 = "2324223132311413144";
     public const string key2 = "32422231131132324242331";
-    public const string key3 = "32422231131132312424223333";
+    public const string key3 = "3242223113333234442";
     public string key;
     public string currentNum;
     
