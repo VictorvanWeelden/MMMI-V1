@@ -10,13 +10,15 @@ public class RigidbodyMovement : MonoBehaviour
     Vector3 walkingDirecion;
     Vector2 moveKeyboard;
     Vector2 moveController;
-    float w, a , s, d, output;
-    AudioSource audioSource;
+    float w, a , s, d, output, wallDistance;
+    [SerializeField] AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(PlayAudio());
         rigidBod = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate() {
@@ -55,18 +57,18 @@ public class RigidbodyMovement : MonoBehaviour
         if(Physics.Raycast(directionRay,out hit)) {
             var motorspeed = Rescale(hit.distance,3);
             var gamepad = Gamepad.current;
+            wallDistance = hit.distance;
             if (gamepad != null && (PlayerPrefs.GetInt("haptic") == 1) ) {
                 gamepad.SetMotorSpeeds(motorspeed, motorspeed);
             }
-
-            var audioFrequency = RescaleAudio(hit.distance, 8);
-            audioSource = GetComponent<AudioSource>();
-            audioSource.pitch = audioFrequency;
-            if (PlayerPrefs.GetInt("audio") == 1) audioSource.Play();
         }
-        
-
-    }   
+    }
+    IEnumerator PlayAudio() {
+        while (true) {
+        if (PlayerPrefs.GetInt("audio") == 1 && wallDistance < 5) audioSource.Play();
+        yield return new WaitForSeconds(wallDistance / 30); // determines the intervals in which the sound will beep higher numbers will make it go faster
+        }
+    }
     // Rescales the distance from the player to the wall to fit the rumbling of the controller
     private float Rescale(float input, float startdistance) {
         output = 0;
@@ -74,12 +76,4 @@ public class RigidbodyMovement : MonoBehaviour
         output = (float)((input-startdistance) *-1/startdistance);
         return output;
     }
-// Rescale for the audio frequency
-    private float RescaleAudio(float distance, float startingPitch){
-        
-        float audioFreq = startingPitch - 2*distance; //we can put 2 * distance if you think the sound is appearing too soon, I was not sure what I like more
-        return audioFreq;
-        
-    }
-
 }
