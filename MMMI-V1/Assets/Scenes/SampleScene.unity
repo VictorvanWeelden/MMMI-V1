@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  audioSource: {fileID: 1767344370}
 --- !u!82 &1767344370
 AudioSource:
   m_ObjectHideFlags: 0

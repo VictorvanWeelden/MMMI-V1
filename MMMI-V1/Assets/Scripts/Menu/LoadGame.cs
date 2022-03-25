@@ -9,4 +9,8 @@ public class LoadGame : MonoBehaviour
     {
        SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
     }
+
+    public void LoadMenu() {
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+    }
 }
