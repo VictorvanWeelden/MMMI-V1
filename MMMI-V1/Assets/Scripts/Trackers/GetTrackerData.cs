@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class GetTrackerData : MonoBehaviour
 {
@@ -18,7 +19,10 @@ public class GetTrackerData : MonoBehaviour
     }
 
     void TakeScreenshot() {
-        string fileName = Application.dataPath + "/Screenshots/" + System.DateTime.Now.ToString("dd-MM-yyyy-HH_mm_ss") + "_" + PlayerPrefs.GetString("username") + "_" + GetMazeType() + "_Level" + PlayerPrefs.GetInt("level") + "_TimeErrs_";
+        /*if (!Directory.Exists(Directory.GetCurrentDirectory() + "/Screenshots/")) {
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/Screenshots");
+        }*/
+        string fileName = Directory.GetCurrentDirectory() + "/Screenshots/" + System.DateTime.Now.ToString("dd-MM-yyyy-HH_mm_ss") + "_" + PlayerPrefs.GetString("username") + "_" + GetMazeType() + "_Level" + PlayerPrefs.GetInt("level") + "_TimeErrs.png";
         ScreenCapture.CaptureScreenshot(fileName);
     }
 
